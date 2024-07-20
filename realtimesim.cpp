@@ -34,7 +34,7 @@ public:
 
 // Define the Simulator class
 class Simulator {
-  std::vector<std::unique_ptr<SimulatorObject>> objects;
+  std::vector<std::unique_ptr<SimulationObject>> objects;
   bool running;
   std::chrono::steady_clock::time_point last_time;
 
@@ -66,7 +66,7 @@ public:
       last_time = current_time;
 
       // Simulate real-time delay
-      std::this_thread::sleep_for(std::chrono::miliseconds(100));
+      std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
       // Placeholder for a stop condition, could be replaced with user input, etc.
       if(std::chrono::steady_clock::now() - last_time > std::chrono::seconds(5)) {
