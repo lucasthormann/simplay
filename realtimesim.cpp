@@ -40,5 +40,10 @@ class Simulator {
 
 public:
   Simulator() : running(false) {}
+  
+  template<typename T, typename... Args>
+  void addObject(Args&&... args) {
+    objects.emplace_back(std::make_unique<T>(std::forward<Args>(args)...));
 
+  }
 
