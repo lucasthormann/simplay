@@ -1,1 +1,4 @@
-* Unfortunately, since this code is merely a simulation and we're missing the actual implementation of the SHA-256 hash function (which we've assumed to be provided in the included 'sha256.h' file), the output hashes are hypothetical.
+* Compile using the following command
+```
+g++ -o sim -std=c++14 realtimesim.cpp
+```
