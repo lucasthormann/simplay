@@ -6,7 +6,7 @@
 #include <random>
 
 // Define the Simulation Object Class
-class SimulationObject {
+class SimulationObject { // Abstract base class with virtual functions allowing various objects with different behavior
   public: 
     virtual void update(double delta_time) = 0;
     virtual void render() = 0;
@@ -21,7 +21,7 @@ class Particle : public SimulationObject {
 public:
   Particle(double pos, double vel) : position(pos), velocity(vel) {}
 
-  void update(double delta_time) override {
+  void update(double delta_time) override { // progresses particles position based on velocity and time elapsed
     position += velocity * delta_time;
 
   }
@@ -33,8 +33,8 @@ public:
 };
 
 // Define the Simulator class
-class Simulator {
-  std::vector<std::unique_ptr<SimulationObject>> objects;
+class Simulator { // Manages simulations execution
+  std::vector<std::unique_ptr<SimulationObject>> objects; // holds collection of SimulationObject pointers, allowing for diffferent types of objects in the sim
   bool running;
   std::chrono::steady_clock::time_point last_time;
 
@@ -49,7 +49,7 @@ public:
   
   void start() {
    running = true;
-   last_time = std::chrono::steady_clock::now();
+   last_time = std::chrono::steady_clock::now(); // steady_clock gives us a monotonic clock to measure elapsed time
 
     while (running) {
       // Calculate delta time
